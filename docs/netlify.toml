@@ -4,3 +4,4 @@
   publish = "docs"  # Adjust to your output folder
 [build.environment]
   PIP_VERBOSE="1"
+  PYTHON_VERSION="3.11"
