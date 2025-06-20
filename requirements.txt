@@ -9,3 +9,4 @@ mkdocs==1.4.3
 mkdocs-material==8.5.10
 setuptools>=65.0
 six==1.16.0
+basicsr==1.4.2
