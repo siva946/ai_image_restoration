@@ -1,5 +1,5 @@
 flask==2.3.3
-opencv-python==4.10.0
+opencv-python==4.11.0.86
 numpy==1.26.4
 Pillow==10.4.0
 torch==2.4.0
