@@ -1,5 +1,0 @@
-[build]
-  command = "pip install -r requirements.txt && mkdocs build"  # Adjust based on your build command
-  publish = "site"  # Adjust to your output folder
-[build.environment]
-  PYTHON_VERSION = "3.8"
