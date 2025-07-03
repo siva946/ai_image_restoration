@@ -1,0 +1,3 @@
+[submodule "BasicSR"]
+	path = BasicSR
+	url = https://github.com/XPixelGroup/BasicSR
