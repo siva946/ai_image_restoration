@@ -1,4 +1,4 @@
-# 🌟 AI Image Restoration: Revive Your Pixels with Magic! 🌟
+# 🌟 AI Image Restoration: Referenced by generative fill in photoshop 🌟
 
 Welcome to **AI Image Restoration**, where faded memories and blurry snapshots get a futuristic makeover! This repository is your gateway to harnessing cutting-edge AI to breathe new life into images—think of it as a time machine for your photos. Whether it's denoising, super-resolution, or filling in the blanks with inpainting, we've got the tools to make your images pop like never before! 🚀
 
