@@ -5,4 +5,4 @@ Pillow
 torch
 diffusers
 gfpgan
-
+gunicorn
