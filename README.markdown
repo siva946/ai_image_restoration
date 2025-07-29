@@ -48,7 +48,7 @@ pip install -r requirements.txt
 1. **Gather Your Ingredients**: Drop your images into the `input/` folder. Got a blurry vacation photo? A scratched family portrait? We’ve got you covered!
 2. **Cast the Spell**: Use our scripts to transform your images. For example:
    ```bash
-   python restore.py --input input/fuzzy_photo.jpg --output output/sharp_masterpiece.jpg --model super_resolution
+   python app.py --input input/fuzzy_photo.jpg --output output/sharp_masterpiece.jpg --model super_resolution
    ```
    Choose your spell: `denoising`, `super_resolution`, or `inpainting`.
 3. **Admire the Result**: Find your rejuvenated images in the `output/` folder, ready to steal the show!
@@ -56,7 +56,7 @@ pip install -r requirements.txt
 ### Example Spell
 Want to turn a low-res image into a high-def stunner? Try this:
 ```bash
-python restore.py --input input/old_pic.jpg --output output/crisp_pic.jpg --model super_resolution
+python app.py --input input/old_pic.jpg --output output/crisp_pic.jpg --model super_resolution
 ```
 
 ---
