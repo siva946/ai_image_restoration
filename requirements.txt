@@ -1,12 +1,8 @@
-flask==3.1.1
-opencv-python==4.12.0.88
-numpy==2.2.6
-Pillow==11.3.0
-torch==2.7.1 # Use CPU version to avoid CUDA issues
-diffusers==0.34.0
-gfpgan==1.3.8
-gunicorn==23.0.0
-basicsr==1.4.1  # Pinned to a potentially stable version
-scipy==1.14.1
-lmdb==1.5.1
-pyyaml==6.0.2
+Flask
+opencv-python
+numpy
+Pillow
+torch
+diffusers
+gfpgan
+
