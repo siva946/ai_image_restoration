@@ -4,7 +4,7 @@ gunicorn==23.0.0
 # ML stack
 torch==2.5.1
 torchvision==0.22.0
-torchaudio==2.5.1
+torchaudio==2.6.0
 
 diffusers==0.27.2
 transformers==4.40.2
