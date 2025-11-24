@@ -1,209 +1,120 @@
 <!DOCTYPE html>
-<html lang="en" class="light" id="html-root">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="AI image restoration, photo enhancement, old photo repair">
     <meta name="description" content="Restore old photos with AI-powered denoising, upscaling, and generative fill.">
-    <title>AI Old Image Restoration</title>
+    <title>AI Image Restoration</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Analytics -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-5L4LEWNFBX"></script> -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-5L4LEWNFBX');
-    </script>
-    <style>
-        :root {
-            --bg-light: #f3f4f6;
-            --bg-dark: #1f2937;
-            --text-light: #1f2937;
-            --text-dark: #e5e7eb;
-            --primary: #3b82f6;
-            --primary-dark: #1d4ed8;
-            --card-bg-light: #ffffff;
-            --card-bg-dark: #374151;
-        }
-        .light {
-            --bg: var(--bg-light);
-            --text: var(--text-light);
-            --card-bg: var(--card-bg-light);
-        }
-        .dark {
-            --bg: var(--bg-dark);
-            --text: var(--text-dark);
-            --card-bg: var(--card-bg-dark);
-        }
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .card {
-            background-color: var(--card-bg);
-            transition: background-color 0.3s;
-        }
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fade-in 0.5s ease-out;
-        }
-    </style>
 </head>
-<body class="min-h-screen font-sans antialiased">
-    <!-- Top Navigation Bar -->
-    <nav class=" top-0 left-0 right-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <h1 class="text-xl sm:text-2xl font-bold">AI Restoration</h1>
-                </div>
-                <div class="hidden md:flex items-center space-x-4">
-                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-blue-700">
-                        <svg id="theme-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                        </svg>
-                    </button>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="menu-toggle" class="p-2 rounded-md hover:bg-blue-700">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+<body class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <h1 class="text-2xl font-bold">AI Image Restoration</h1>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-blue-600">
-            <button id="mobile-theme-toggle" class="block px-4 py-2 hover:bg-blue-700 w-full text-left flex items-center">
-                <svg id="mobile-theme-icon" class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                </svg>
-                Toggle Theme
-            </button>
-        </div>
-    </nav>
+    </header>
 
     <!-- Main Content -->
-    <div class="pt-20 p-4 sm:p-6 md:p-8">
-        <div class="max-w-7xl mx-auto">
-            <header class="mb-8 animate-fade-in">
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-                    AI Old Image Restoration
-                </h1>
-                <p class="text-center text-gray-600 dark:text-gray-300 mt-2">Revive your memories with cutting-edge AI technology</p>
-            </header>
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Controls -->
+            <aside class="space-y-6">
+                <!-- Upload -->
+                <section class="bg-white rounded-lg shadow p-6">
+                    <h2 class="text-lg font-semibold mb-4 text-gray-800">Upload Image</h2>
+                    <input type="file" id="imageUpload" accept="image/*" 
+                        class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 
+                        file:rounded file:border file:border-blue-600 file:bg-blue-600 
+                        file:text-white hover:file:bg-blue-700 file:cursor-pointer">
+                </section>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Controls Section -->
-                <div class="lg:col-span-1 space-y-6">
-                    <!-- Upload Card -->
-                    <div class="card rounded-xl shadow-lg p-6 animate-fade-in">
-                        <h2 class="text-xl font-semibold mb-4">Upload Image</h2>
-                        <input type="file" id="imageUpload" accept="image/*" class="block w-full text-sm text-gray-500
-                            file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold
-                            file:bg-gradient-to-r file:from-blue-500 file:to-purple-500 file:text-white hover:file:opacity-90">
+                <!-- Options -->
+                <section class="bg-white rounded-lg shadow p-6">
+                    <h2 class="text-lg font-semibold mb-4 text-gray-800">Options</h2>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="denoise" checked 
+                                class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500">
+                            <span class="text-gray-700">Denoise</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="upscale" 
+                                class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500">
+                            <span class="text-gray-700">Upscale (4x)</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="enhance" checked 
+                                class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500">
+                            <span class="text-gray-700">Enhance</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="faceEnhance" 
+                                class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500">
+                            <span class="text-gray-700">Face Enhancement</span>
+                        </label>
                     </div>
+                </section>
 
-                    <!-- Restoration Options Card -->
-                    <div class="card rounded-xl shadow-lg p-6 animate-fade-in">
-                        <h2 class="text-xl font-semibold mb-4">Restoration Options</h2>
-                        <div class="space-y-4">
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" id="denoise" checked class="h-5 w-5 text-blue-500">
-                                <span>Denoise</span>
+                <!-- Generative Fill -->
+                <section class="bg-white rounded-lg shadow p-6">
+                    <h2 class="text-lg font-semibold mb-4 text-gray-800">Generative Fill</h2>
+                    <div class="space-y-4">
+                        <input type="text" id="prompt" placeholder="Enter prompt (e.g., smooth skin)" 
+                            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-600">
+                        <div class="flex gap-2">
+                            <button id="clearMask" 
+                                class="flex-1 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">
+                                Clear Mask
+                            </button>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-700 mb-2">
+                                Brush Size: <span id="brushSizeValue">10</span>px
                             </label>
-                            <label for="denoiseStrength" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Denoise Strength</label>
-                            <input type="range" id="denoiseStrength" min="1" max="30" value="10" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" id="upscale" class="h-5 w-5 text-blue-500">
-                                <span>Upscale</span>
-                            </label>
-                            <label for="upscaleFactor" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Upscale Factor</label>
-                            <select id="upscaleFactor" class="w-full rounded-lg border border-gray-300 dark:border-gray-600 p-2">
-                                <option value="2">2x</option>
-                                <option value="4" selected>4x</option>
-                                <option value="8">8x</option>
-                            </select>
-
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" id="enhance" checked class="h-5 w-5 text-blue-500">
-                                <span>Enhance</span>
-                            </label>
-                            <label for="enhanceIntensity" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Enhance Intensity</label>
-                            <input type="range" id="enhanceIntensity" min="1" max="10" value="3" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" id="faceEnhance" class="h-5 w-5 text-blue-500">
-                                <span>Face Enhancement</span>
-                            </label>
-                            <label for="faceEnhanceScale" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Face Enhance Scale</label>
-                            <input type="range" id="faceEnhanceScale" min="1" max="4" step="0.1" value="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                            <input type="range" id="brushSize" min="5" max="50" value="10" 
+                                class="w-full h-2 bg-gray-200 rounded cursor-pointer">
                         </div>
                     </div>
+                </section>
 
-                    <!-- Generative Fill Card -->
-                    <div class="card rounded-xl shadow-lg p-6 animate-fade-in">
-                        <h2 class="text-xl font-semibold mb-4">Generative Fill</h2>
-                        <div class="space-y-4">
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <input type="text" id="prompt" placeholder="Enter prompt (e.g., smooth skin)" class="border border-gray-300 dark:border-gray-600 rounded-lg p-2 flex-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <button id="clearMask" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-transform transform hover:scale-105">Clear Mask</button>
-                            </div>
-                            <label class="block">
-                                Brush Size:
-                                <input type="range" id="brushSize" min="5" max="50" value="10" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                            </label>
+                <!-- Process Button -->
+                <button id="process" 
+                    class="w-full bg-blue-600 text-white px-6 py-3 rounded font-semibold hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed">
+                    Process Image
+                </button>
+            </aside>
+
+            <!-- Canvas & Results -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Canvas -->
+                <section class="bg-white rounded-lg shadow p-6">
+                    <h2 class="text-lg font-semibold mb-4 text-gray-800">Draw Mask (Green = Fill Area)</h2>
+                    <canvas id="canvas" class="w-full border-2 border-gray-300 rounded cursor-crosshair"></canvas>
+                </section>
+
+                <!-- Results -->
+                <section class="bg-white rounded-lg shadow p-6">
+                    <h2 class="text-lg font-semibold mb-4 text-gray-800">Results</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <h3 class="text-sm font-medium mb-2 text-gray-600">Original</h3>
+                            <img id="originalImage" class="w-full h-auto rounded border border-gray-300" alt="Original">
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-medium mb-2 text-gray-600">Restored</h3>
+                            <img id="restoredImage" class="w-full h-auto rounded border border-gray-300" alt="Restored">
                         </div>
                     </div>
-
-                    <!-- Process Button -->
-                    <button id="process" class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-lg hover:from-blue-600 hover:to-purple-600 transition-transform transform hover:scale-105 animate-fade-in">
-                        Process Image
+                    <button id="download" 
+                        class="mt-4 w-full bg-green-600 text-white px-6 py-3 rounded font-semibold hover:bg-green-700 transition hidden">
+                        Download Restored Image
                     </button>
-                </div>
-
-                <!-- Canvas and Results Section -->
-                <div class="lg:col-span-2 space-y-6">
-                    <!-- Canvas Card -->
-                    <div class="card rounded-xl shadow-lg p-6 animate-fade-in">
-                        <h2 class="text-xl font-semibold mb-4">Draw Mask</h2>
-                        <canvas id="canvas" class="w-full border-2 border-gray-300 dark:border-gray-600 rounded-lg"></canvas>
-                    </div>
-
-                    <!-- Results Card -->
-                    <div class="card rounded-xl shadow-lg p-6 animate-fade-in">
-                        <h2 class="text-xl font-semibold mb-4">Results</h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <h3 class="text-lg font-medium mb-2">Original Image</h3>
-                                <img id="originalImage" class="w-full h-auto rounded-lg border border-gray-300 dark:border-gray-600">
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-medium mb-2">Restored Image</h3>
-                                <img id="restoredImage" class="w-full h-auto rounded-lg border border-gray-300 dark:border-gray-600">
-                            </div>
-                        </div>
-                        <button id="download" class="mt-4 w-full bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-transform transform hover:scale-105 hidden">
-                            Download Restored Image
-                        </button>
-                    </div>
-                </div>
+                </section>
             </div>
-
-            <!-- Footer -->
-            <footer class="mt-12 text-center text-gray-600 dark:text-gray-300">
-                <a href="/privacy" class="hover:underline">Privacy Policy</a> |
-                <a href="/terms" class="hover:underline">Terms of Service</a>
-            </footer>
         </div>
-    </div>
+    </main>
 
     <script>
         const canvas = document.getElementById('canvas');
@@ -216,46 +127,10 @@
         let canvasScaleX = 1;
         let canvasScaleY = 1;
 
-        // Initialize line width
         ctx.lineWidth = brushSize;
+        ctx.strokeStyle = 'green';
+        ctx.lineCap = 'round';
 
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const mobileThemeIcon = document.getElementById('mobile-theme-icon');
-        const htmlRoot = document.getElementById('html-root');
-        function updateThemeIcon(isDark) {
-            themeIcon.innerHTML = isDark ? 
-                '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>' : 
-                '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>';
-            mobileThemeIcon.innerHTML = themeIcon.innerHTML;
-        }
-        if (localStorage.getItem('theme') === 'dark') {
-            htmlRoot.classList.add('dark');
-            updateThemeIcon(true);
-        }
-        themeToggle.addEventListener('click', () => {
-            htmlRoot.classList.toggle('dark');
-            const isDark = htmlRoot.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            updateThemeIcon(isDark);
-        });
-        mobileThemeToggle.addEventListener('click', () => {
-            htmlRoot.classList.toggle('dark');
-            const isDark = htmlRoot.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            updateThemeIcon(isDark);
-        });
-
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Set up canvas
         function resizeCanvas(img) {
             const maxWidth = window.innerWidth < 640 ? window.innerWidth - 40 : 800;
             const aspectRatio = img.width / img.height;
@@ -268,10 +143,9 @@
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             ctx.strokeStyle = 'green';
             ctx.lineCap = 'round';
-            console.log(`Canvas: ${canvas.width}x${canvas.height}, Image: ${originalImageWidth}x${originalImageHeight}, Scale: ${canvasScaleX}x${canvasScaleY}`);
+            ctx.lineWidth = brushSize;
         }
 
-        // Image upload
         document.getElementById('imageUpload').addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (file) {
@@ -281,23 +155,24 @@
                     resizeCanvas(originalImage);
                     document.getElementById('originalImage').src = originalImage.src;
                     document.getElementById('restoredImage').src = '';
+                    document.getElementById('download').classList.add('hidden');
                 };
             }
         });
 
-        // Brush size
         document.getElementById('brushSize').addEventListener('input', (e) => {
             brushSize = e.target.value;
             ctx.lineWidth = brushSize;
+            document.getElementById('brushSizeValue').textContent = brushSize;
         });
 
-        // Clear mask
         document.getElementById('clearMask').addEventListener('click', () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+            if (originalImage) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+            }
         });
 
-        // Canvas drawing
         canvas.addEventListener('mousedown', (e) => {
             drawing = true;
             ctx.beginPath();
@@ -311,62 +186,50 @@
             }
         });
 
-        canvas.addEventListener('mouseup', () => {
-            drawing = false;
-        });
+        canvas.addEventListener('mouseup', () => drawing = false);
+        canvas.addEventListener('mouseout', () => drawing = false);
 
-        canvas.addEventListener('mouseout', () => {
-            drawing = false;
-        });
-
-        // Touch support for mobile
         canvas.addEventListener('touchstart', (e) => {
             e.preventDefault();
             drawing = true;
+            const rect = canvas.getBoundingClientRect();
             const touch = e.touches[0];
             ctx.beginPath();
-            ctx.moveTo(touch.clientX - canvas.offsetLeft, touch.clientY - canvas.offsetTop);
+            ctx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top);
         });
 
         canvas.addEventListener('touchmove', (e) => {
             e.preventDefault();
             if (drawing) {
+                const rect = canvas.getBoundingClientRect();
                 const touch = e.touches[0];
-                ctx.lineTo(touch.clientX - canvas.offsetLeft, touch.clientY - canvas.offsetTop);
+                ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
                 ctx.stroke();
             }
         });
 
-        canvas.addEventListener('touchend', () => {
-            drawing = false;
-        });
+        canvas.addEventListener('touchend', () => drawing = false);
 
-            // Process image
-            document.getElementById('process').addEventListener('click', async () => {
-                if (!originalImage) {
-                    alert('Please upload an image.');
-                    return;
-                }
+        document.getElementById('process').addEventListener('click', async () => {
+            if (!originalImage) {
+                alert('Please upload an image first.');
+                return;
+            }
 
-                const formData = new FormData();
-                formData.append('image', document.getElementById('imageUpload').files[0]);
-                formData.append('denoise', document.getElementById('denoise').checked);
-                formData.append('upscale', document.getElementById('upscale').checked);
-                formData.append('enhance', document.getElementById('enhance').checked);
-                formData.append('faceEnhance', document.getElementById('faceEnhance').checked);
-                formData.append('prompt', document.getElementById('prompt').value);
+            const formData = new FormData();
+            formData.append('image', document.getElementById('imageUpload').files[0]);
+            formData.append('denoise', document.getElementById('denoise').checked);
+            formData.append('upscale', document.getElementById('upscale').checked);
+            formData.append('enhance', document.getElementById('enhance').checked);
+            formData.append('faceEnhance', document.getElementById('faceEnhance').checked);
+            formData.append('prompt', document.getElementById('prompt').value);
 
-            // Convert canvas to mask at original image resolution
             const maskCanvas = document.createElement('canvas');
             maskCanvas.width = originalImageWidth;
             maskCanvas.height = originalImageHeight;
             const maskCtx = maskCanvas.getContext('2d');
-
-            // Scale the drawing from displayed canvas to original resolution
             maskCtx.scale(canvasScaleX, canvasScaleY);
             maskCtx.drawImage(canvas, 0, 0);
-
-            // Reset transform to avoid affecting further operations
             maskCtx.setTransform(1, 0, 0, 1, 0, 0);
 
             const imageData = maskCtx.getImageData(0, 0, maskCanvas.width, maskCanvas.height);
@@ -387,16 +250,14 @@
                 }
             }
             maskCtx.putImageData(imageData, 0, 0);
+
             maskCanvas.toBlob((blob) => {
                 formData.append('mask', blob, 'mask.png');
 
-                // Disable process button and show loading text
                 const processBtn = document.getElementById('process');
                 processBtn.disabled = true;
-                const originalText = processBtn.textContent;
                 processBtn.textContent = 'Processing...';
 
-                // Send to backend
                 fetch('/process', {
                     method: 'POST',
                     body: formData
@@ -404,7 +265,7 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {
-                        alert(data.error);
+                        alert('Error: ' + data.error);
                     } else {
                         const restoredImg = document.getElementById('restoredImage');
                         restoredImg.src = 'data:image/png;base64,' + data.restored_image;
@@ -420,9 +281,8 @@
                 })
                 .catch(error => alert('Error: ' + error))
                 .finally(() => {
-                    // Re-enable process button and restore text
                     processBtn.disabled = false;
-                    processBtn.textContent = originalText;
+                    processBtn.textContent = 'Process Image';
                 });
             });
         });
